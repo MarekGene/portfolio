@@ -1,0 +1,161 @@
+body   {
+    background-image: url(background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    color: aliceblue;
+}
+    
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 300%;
+    padding-top: 2%;
+    text-decoration: underline;
+    text-underline-offset: 10%;
+}
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 3%;
+
+}
+
+/* Hlavní obal pro celou časovou osu */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Mezera mezi jednotlivými kapitolami pod sebou */
+}
+
+/* Svislá žlutá čára vedoucí přesně středem stránky */
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background-color: #f6f6f2;    /* bílá čára */
+    transform: translateX(-50%); /* Přesné vycentrování čáry */
+}
+
+/* Základní styl pro každou kapitolu */
+.kapitola {
+    position: relative;
+    width: 42%;                   /* Šířka bloku s textem */
+    background: #1e1e1e;          /* Tmavší pozadí bloku */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Nadpisy a odstavce v kapitole */
+.kapitola h2 {
+    margin-top: 0;
+    color: #fafaf8; /* Žlutý nadpis */
+    text-align: left;
+}
+
+.kapitola p {
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Žlutá tečka na středové čáře */
+.kapitola::before {
+    content: "";
+    position: absolute;
+    top: 40%;                  /* Výška tečky zarovnaná k nadpisu */
+    width: 16px;
+    height: 16px;
+    background-color: #f2f1ee;     /* Žlutá tečka */
+    border: 3px solid #121212;     /* Okraj v barvě pozadí stránky pro odseknutí od čáry */
+    border-radius: 50%;
+    z-index: 1;                    /* Dá tečku nad svislou čáru */
+}
+
+/* Kapitola vlevo */
+.vlevo {
+    align-self: flex-start;        /* Posun bloku do levé poloviny */
+    text-align: right;             /* Zarovnání textu doprava k čáře */
+}
+
+.vlevo::before {
+    right: -16px;                /* Umístí tečku na středovou čáru zprava */
+}
+
+/* Kapitola vpravo */
+.vpravo {
+    align-self: flex-end;          /* Posun bloku do pravé poloviny */
+    text-align: left;              /* Zarovnání textu doleva k čáře */
+}
+
+.vpravo::before {
+    left: -16px;                  /* Umístí tečku na středovou čáru zleva */
+}
+
+.site-footer {
+    background-color: #1e1e1e;
+    border-top: 1px solid #121212;
+    padding: 30px 20px ;
+    margin-top: 60px;
+    text-align: center;
+    color: white;
+
+}
+
+.footer-obsah p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+
+.footer-odkazy a {
+    color: #fafaf8;
+    text-decoration: underline;
+}
+
+.footer-odkazy a:hover {
+    color: #ffd700;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #666666;
+    margin-top: 15px !important;
+}
+
+/*test*/
+
+
+/* Aby se pozice počítala od obalu časové osy/řádku */
+.kapitola {
+    position: relative;
+}
+
+/* Absolutní vytlačení fotky na druhou stranu osy */
+.foto-naproti {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Srovná fotku přesně na střed výšky textu */
+    width: 100%;                  /* Vyplní šířku protějšího prostoru */
+    height: auto;                /* Zachová původní poměr stran */
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+/* Když je text vpravo, fotka se posune do levého sloupce */
+.kapitola.vpravo .foto-naproti {
+    left: -118%; /* Posune fotku do levé poloviny přes bílou čáru */
+}
+
+/* Když je text vlevo, fotka se posune do pravého sloupce */
+.kapitola.vlevo .foto-naproti {
+    right: -118%; /* Posune fotku do pravé poloviny přes bílou čáru */
+}
